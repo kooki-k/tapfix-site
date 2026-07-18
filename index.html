@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ezFix — צלמו את הבעיה, הטכנאי הטוב באזור חוזר אליכם</title>
-<meta name="description" content="ezFix — מצלמים את התקלה, שולחים בקשה בחינם, והטכנאי הטוב ביותר באזורכם חוזר אליכם. עכו · חיפה · נצרת והסביבה.">
+<title>TapFix — צלמו את הבעיה, הטכנאי הטוב באזור חוזר אליכם</title>
+<meta name="description" content="TapFix — מצלמים את התקלה, שולחים בקשה בחינם, והטכנאי הטוב ביותר באזורכם חוזר אליכם. עכו · חיפה · נצרת והסביבה.">
 <link rel="icon" type="image/png" href="icon.png">
 <style>
   :root {
@@ -26,7 +26,7 @@
   .hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%); color: #fff; text-align: center; padding: 64px 20px 72px; border-radius: 0 0 32px 32px; }
   .hero h1 { font-size: clamp(28px, 6vw, 46px); font-weight: 900; line-height: 1.25; margin-bottom: 14px; }
   .hero p { font-size: clamp(15px, 3vw, 19px); opacity: .92; margin-bottom: 30px; }
-  .badge-soon { display: inline-block; background: var(--orange); color: #fff; font-weight: 800; font-size: 17px; padding: 14px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(249,115,22,.4); }
+  .badge-soon { display: inline-block; background: var(--orange); color: #fff; font-weight: 800; font-size: 17px; padding: 14px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(249,115,22,.4); text-decoration: none; cursor: pointer; }
   .badge-android { display: block; margin-top: 14px; font-size: 13px; opacity: .75; }
   .regions { margin-top: 26px; font-size: 14px; opacity: .7; }
 
@@ -54,7 +54,7 @@
 <body>
 <div class="container">
   <header>
-    <div class="brand"><img src="icon.png" alt="ezFix"><span><span class="ez">ez</span><span class="fix">Fix</span></span></div>
+    <div class="brand"><img src="icon.png" alt="TapFix"><span><span class="ez">Tap</span><span class="fix">Fix</span></span></div>
     <nav class="langs">
       <button data-lang="he" class="active">עברית</button>
       <button data-lang="ar">العربية</button>
@@ -67,7 +67,7 @@
 <div class="hero">
   <h1 data-i18n="heroTitle">צלמו את הבעיה —<br>הטכנאי הטוב באזור חוזר אליכם</h1>
   <p data-i18n="heroSub">בלי לחפש המלצות. בלי עשרים טלפונים. בחינם.</p>
-  <span class="badge-soon" data-i18n="soon">📲 בקרוב ב-App Store</span>
+  <a id="downloadBtn" class="badge-soon" data-i18n="soon">📲 בקרוב ב-App Store</a>
   <span class="badge-android" data-i18n="android">Android — בהמשך הדרך</span>
   <div class="regions" data-i18n="regions">עכו · חיפה · נצרת והסביבה</div>
 </div>
@@ -83,7 +83,7 @@
   </section>
 
   <section>
-    <h2 data-i18n="whyTitle">למה ezFix?</h2>
+    <h2 data-i18n="whyTitle">למה TapFix?</h2>
     <div class="features">
       <div class="feature"><span>⭐</span><span data-i18n="f1">טכנאים מדורגים על ידי לקוחות אמיתיים</span></div>
       <div class="feature"><span>🆓</span><span data-i18n="f2">חינם לחלוטין ללקוחות</span></div>
@@ -96,7 +96,7 @@
     <div class="tech-cta">
       <h2 data-i18n="techTitle">🛠️ טכנאי? בעל מקצוע?</h2>
       <p data-i18n="techSub">הצטרפו כטכנאים מייסדים וקבלו קרדיטים מתנה — עבודות באזור שלכם, ישר לטלפון</p>
-      <a href="mailto:kh.buznez@gmail.com?subject=ezFix%20-%20%D7%98%D7%9B%D7%A0%D7%90%D7%99%20%D7%9E%D7%99%D7%99%D7%A1%D7%93" data-i18n="techBtn">דברו איתנו ›</a>
+      <a id="techBtn" href="mailto:kh.buznez@gmail.com?subject=TapFix%20-%20%D7%98%D7%9B%D7%A0%D7%90%D7%99%20%D7%9E%D7%99%D7%99%D7%A1%D7%93" data-i18n="techBtn">דברו איתנו ›</a>
     </div>
   </section>
 </div>
@@ -106,16 +106,31 @@
     <a href="privacy.html" data-i18n="privacy">מדיניות פרטיות</a> ·
     <a href="mailto:kh.buznez@gmail.com" data-i18n="contact">צרו קשר</a>
   </div>
-  <div style="margin-top:8px">© 2026 ezFix</div>
+  <div style="margin-top:8px">© 2026 TapFix</div>
 </footer>
 
 <script>
+/* ⚙️ CONFIG — لما يوصل الرابط والرقم، عبّي هدول السطرين بس وكل الأزرار بتشتغل لحالها: */
+const APP_STORE_URL = "";      /* مثال: "https://apps.apple.com/il/app/tapfix/id0000000000" */
+const WHATSAPP_NUMBER = "";    /* صيغة دولية بدون + ، مثال: "972501234567" */
+
 const T = {
-  he: { dir:"rtl", heroTitle:"צלמו את הבעיה —<br>הטכנאי הטוב באזור חוזר אליכם", heroSub:"בלי לחפש המלצות. בלי עשרים טלפונים. בחינם.", soon:"📲 בקרוב ב-App Store", android:"Android — בהמשך הדרך", regions:"עכו · חיפה · נצרת והסביבה", howTitle:"איך זה עובד?", s1t:"מצלמים", s1p:"מצלמים את התקלה — נזילה, קצר, מזגן — עד 5 תמונות", s2t:"שולחים בחינם", s2p:"ממלאים כמה פרטים ושולחים. הבקשה מגיעה לטכנאים באזורכם", s3t:"הטכנאי מתקשר", s3p:"הטכנאי המתאים חוזר אליכם ישירות — המחיר והמועד ביניכם", whyTitle:"למה ezFix?", f1:"טכנאים מדורגים על ידי לקוחות אמיתיים", f2:"חינם לחלוטין ללקוחות", f3:"עברית · ערבית · רוסית · אנגלית", f4:"הטלפון שלכם נחשף רק לטכנאי שלוקח את העבודה", techTitle:"🛠️ טכנאי? בעל מקצוע?", techSub:"הצטרפו כטכנאים מייסדים וקבלו קרדיטים מתנה — עבודות באזור שלכם, ישר לטלפון", techBtn:"דברו איתנו ›", privacy:"מדיניות פרטיות", contact:"צרו קשר" },
-  ar: { dir:"rtl", heroTitle:"صوّروا العطل —<br>أفضل فنّي بالمنطقة بيرجعلكم", heroSub:"بدون البحث عن توصيات. بدون عشرين مكالمة. مجانًا.", soon:"📲 قريبًا على App Store", android:"Android — لاحقًا", regions:"عكا · حيفا · الناصرة والمنطقة", howTitle:"كيف بيشتغل؟", s1t:"صوّروا", s1p:"صوّروا العطل — تسريب، كهرباء، مكيّف — حتى 5 صور", s2t:"أرسلوا مجانًا", s2p:"عبّوا كم تفصيل وأرسلوا. الطلب بيوصل للفنّيين بمنطقتكم", s3t:"الفنّي بيتصل", s3p:"الفنّي المناسب بيرجعلكم مباشرة — السعر والموعد بينكم", whyTitle:"ليش ezFix؟", f1:"فنّيون مقيّمون من زبائن حقيقيين", f2:"مجاني تمامًا للزبائن", f3:"عربي · عبري · روسي · إنجليزي", f4:"تلفونكم بينكشف بس للفنّي اللي بياخد الشغلة", techTitle:"🛠️ فنّي؟ صاحب مهنة؟", techSub:"انضموا كفنّيين مؤسسين واحصلوا على رصيد هدية — شغل بمنطقتكم مباشرة على التلفون", techBtn:"احكوا معنا ›", privacy:"سياسة الخصوصية", contact:"تواصلوا معنا" },
-  en: { dir:"ltr", heroTitle:"Snap the problem —<br>the best local technician calls you back", heroSub:"No hunting for recommendations. No twenty phone calls. Free.", soon:"📲 Coming soon to the App Store", android:"Android — later on", regions:"Acre · Haifa · Nazareth & area", howTitle:"How it works", s1t:"Snap", s1p:"Photograph the problem — a leak, a short, an A/C — up to 5 photos", s2t:"Send for free", s2p:"Fill in a few details and send. Your request reaches technicians nearby", s3t:"The technician calls", s3p:"The right technician contacts you directly — price and timing are between you", whyTitle:"Why ezFix?", f1:"Technicians rated by real customers", f2:"Completely free for customers", f3:"Hebrew · Arabic · Russian · English", f4:"Your phone number is revealed only to the technician who takes the job", techTitle:"🛠️ Technician? Pro?", techSub:"Join as a founding technician and get bonus credits — jobs in your area, straight to your phone", techBtn:"Talk to us ›", privacy:"Privacy Policy", contact:"Contact" },
-  ru: { dir:"ltr", heroTitle:"Сфотографируйте проблему —<br>лучший мастер района вам перезвонит", heroSub:"Без поиска рекомендаций. Без двадцати звонков. Бесплатно.", soon:"📲 Скоро в App Store", android:"Android — позже", regions:"Акко · Хайфа · Назарет и окрестности", howTitle:"Как это работает", s1t:"Сфотографируйте", s1p:"Снимите неисправность — протечку, замыкание, кондиционер — до 5 фото", s2t:"Отправьте бесплатно", s2p:"Заполните пару деталей и отправьте. Заявка дойдёт до мастеров рядом", s3t:"Мастер звонит", s3p:"Подходящий мастер свяжется с вами напрямую — цена и сроки между вами", whyTitle:"Почему ezFix?", f1:"Мастера с оценками реальных клиентов", f2:"Полностью бесплатно для клиентов", f3:"Иврит · Арабский · Русский · Английский", f4:"Ваш номер видит только мастер, взявший заказ", techTitle:"🛠️ Мастер? Специалист?", techSub:"Станьте мастером-основателем и получите бонусные кредиты — заказы вашего района прямо в телефон", techBtn:"Свяжитесь с нами ›", privacy:"Политика конфиденциальности", contact:"Контакт" }
+  he: { dir:"rtl", heroTitle:"צלמו את הבעיה —<br>הטכנאי הטוב באזור חוזר אליכם", heroSub:"בלי לחפש המלצות. בלי עשרים טלפונים. בחינם.", soon:"📲 בקרוב ב-App Store", android:"Android — בהמשך הדרך", regions:"עכו · חיפה · נצרת והסביבה", howTitle:"איך זה עובד?", s1t:"מצלמים", s1p:"מצלמים את התקלה — נזילה, קצר, מזגן — עד 5 תמונות", s2t:"שולחים בחינם", s2p:"ממלאים כמה פרטים ושולחים. הבקשה מגיעה לטכנאים באזורכם", s3t:"הטכנאי מתקשר", s3p:"הטכנאי המתאים חוזר אליכם ישירות — המחיר והמועד ביניכם", whyTitle:"למה TapFix?", f1:"טכנאים מדורגים על ידי לקוחות אמיתיים", f2:"חינם לחלוטין ללקוחות", f3:"עברית · ערבית · רוסית · אנגלית", f4:"הטלפון שלכם נחשף רק לטכנאי שלוקח את העבודה", techTitle:"🛠️ טכנאי? בעל מקצוע?", techSub:"הצטרפו כטכנאים מייסדים וקבלו קרדיטים מתנה — עבודות באזור שלכם, ישר לטלפון", techBtn:"דברו איתנו ›", privacy:"מדיניות פרטיות", contact:"צרו קשר", download:"הורידו עכשיו ב-App Store", techWa:"שלום, אני בעל מקצוע ואשמח להצטרף ל-TapFix כטכנאי מייסד" },
+  ar: { dir:"rtl", heroTitle:"صوّروا العطل —<br>أفضل فنّي بالمنطقة بيرجعلكم", heroSub:"بدون البحث عن توصيات. بدون عشرين مكالمة. مجانًا.", soon:"📲 قريبًا على App Store", android:"Android — لاحقًا", regions:"عكا · حيفا · الناصرة والمنطقة", howTitle:"كيف بيشتغل؟", s1t:"صوّروا", s1p:"صوّروا العطل — تسريب، كهرباء، مكيّف — حتى 5 صور", s2t:"أرسلوا مجانًا", s2p:"عبّوا كم تفصيل وأرسلوا. الطلب بيوصل للفنّيين بمنطقتكم", s3t:"الفنّي بيتصل", s3p:"الفنّي المناسب بيرجعلكم مباشرة — السعر والموعد بينكم", whyTitle:"ليش TapFix؟", f1:"فنّيون مقيّمون من زبائن حقيقيين", f2:"مجاني تمامًا للزبائن", f3:"عربي · عبري · روسي · إنجليزي", f4:"تلفونكم بينكشف بس للفنّي اللي بياخد الشغلة", techTitle:"🛠️ فنّي؟ صاحب مهنة؟", techSub:"انضموا كفنّيين مؤسسين واحصلوا على رصيد هدية — شغل بمنطقتكم مباشرة على التلفون", techBtn:"احكوا معنا ›", privacy:"سياسة الخصوصية", contact:"تواصلوا معنا", download:"نزّلوا الآن من الـApp Store", techWa:"مرحبا، أنا فنّي وحابب أنضم لـTapFix كفنّي مؤسس" },
+  en: { dir:"ltr", heroTitle:"Snap the problem —<br>the best local technician calls you back", heroSub:"No hunting for recommendations. No twenty phone calls. Free.", soon:"📲 Coming soon to the App Store", android:"Android — later on", regions:"Acre · Haifa · Nazareth & area", howTitle:"How it works", s1t:"Snap", s1p:"Photograph the problem — a leak, a short, an A/C — up to 5 photos", s2t:"Send for free", s2p:"Fill in a few details and send. Your request reaches technicians nearby", s3t:"The technician calls", s3p:"The right technician contacts you directly — price and timing are between you", whyTitle:"Why TapFix?", f1:"Technicians rated by real customers", f2:"Completely free for customers", f3:"Hebrew · Arabic · Russian · English", f4:"Your phone number is revealed only to the technician who takes the job", techTitle:"🛠️ Technician? Pro?", techSub:"Join as a founding technician and get bonus credits — jobs in your area, straight to your phone", techBtn:"Talk to us ›", privacy:"Privacy Policy", contact:"Contact", download:"Download on the App Store", techWa:"Hi, I'm a technician and I'd like to join TapFix as a founding technician" },
+  ru: { dir:"ltr", heroTitle:"Сфотографируйте проблему —<br>лучший мастер района вам перезвонит", heroSub:"Без поиска рекомендаций. Без двадцати звонков. Бесплатно.", soon:"📲 Скоро в App Store", android:"Android — позже", regions:"Акко · Хайфа · Назарет и окрестности", howTitle:"Как это работает", s1t:"Сфотографируйте", s1p:"Снимите неисправность — протечку, замыкание, кондиционер — до 5 фото", s2t:"Отправьте бесплатно", s2p:"Заполните пару деталей и отправьте. Заявка дойдёт до мастеров рядом", s3t:"Мастер звонит", s3p:"Подходящий мастер свяжется с вами напрямую — цена и сроки между вами", whyTitle:"Почему TapFix?", f1:"Мастера с оценками реальных клиентов", f2:"Полностью бесплатно для клиентов", f3:"Иврит · Арабский · Русский · Английский", f4:"Ваш номер видит только мастер, взявший заказ", techTitle:"🛠️ Мастер? Специалист?", techSub:"Станьте мастером-основателем и получите бонусные кредиты — заказы вашего района прямо в телефон", techBtn:"Свяжитесь с нами ›", privacy:"Политика конфиденциальности", contact:"Контакт", download:"Скачать в App Store", techWa:"Здравствуйте, я мастер и хочу присоединиться к TapFix как мастер-основатель" }
 };
+function applyCta(t) {
+  const dl = document.getElementById("downloadBtn");
+  if (dl) {
+    if (APP_STORE_URL) { dl.href = APP_STORE_URL; dl.innerHTML = "📲 " + (t.download || ""); }
+    else { dl.removeAttribute("href"); }
+  }
+  const tb = document.getElementById("techBtn");
+  if (tb && WHATSAPP_NUMBER) {
+    tb.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(t.techWa || "");
+  }
+}
 function setLang(l) {
   const t = T[l]; if (!t) return;
   document.documentElement.lang = l;
@@ -125,10 +140,11 @@ function setLang(l) {
     if (t[key]) el.innerHTML = t[key];
   });
   document.querySelectorAll(".langs button").forEach(b => b.classList.toggle("active", b.dataset.lang === l));
-  localStorage.setItem("ezfix-lang", l);
+  applyCta(t);
+  localStorage.setItem("tapfix-lang", l);
 }
 document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
-setLang(localStorage.getItem("ezfix-lang") || "he");
+setLang(localStorage.getItem("tapfix-lang") || "he");
 </script>
 </body>
 </html>

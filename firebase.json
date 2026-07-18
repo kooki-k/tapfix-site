@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "site": "tapfix",
+    "public": ".",
+    "ignore": ["firebase.json", "**/.*", "DEPLOY.md"],
+    "cleanUrls": true
+  }
+}
